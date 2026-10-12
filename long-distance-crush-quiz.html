@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Does Your Long Distance Crush Like You Back?</title>
+<meta name="description" content="19 questions to find out if your long distance crush likes you back.">
+<meta property="og:title" content="Does your long distance crush like you back?">
+<meta property="og:description" content="19 questions. Be honest with yourself.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blush:#FFF0F5;
+    --cream:#FFFAFC;
+    --bubblegum:#FF8FB1;
+    --hot:#E8508A;
+    --lilac:#E9D8FF;
+    --berry:#5A1E3A;
+    --display:"Bagel Fat One","Chewy","Arial Rounded MT Bold",ui-rounded,system-ui,sans-serif;
+    --body:"Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--body);
+    color:var(--berry);
+    background-color:var(--blush);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cg fill='%23FF8FB1' fill-opacity='.22'%3E%3Cpath d='M40 40c-9-14-30-4-22 12 5 9 22 18 22 18s17-9 22-18c8-16-13-26-22-12z'/%3E%3Cpath d='M160 120c-7-11-24-3-18 10 4 7 18 14 18 14s13-7 18-14c6-13-11-21-18-10z' fill='%23E9D8FF' fill-opacity='.7'/%3E%3Cpath d='M110 190c-5-8-17-2-13 7 3 5 13 10 13 10s9-5 13-10c4-9-8-15-13-7z'/%3E%3C/g%3E%3C/svg%3E");
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    padding:20px 16px 40px;
+    line-height:1.45;
+  }
+  main{width:100%;max-width:480px}
+  .screen{display:none}
+  .screen.active{display:block}
+
+  /* sticker card */
+  .card{
+    background:var(--cream);
+    border:2.5px solid var(--berry);
+    border-radius:26px;
+    box-shadow:5px 5px 0 var(--bubblegum);
+    padding:26px 22px;
+  }
+
+  /* intro */
+  .intro{text-align:center;padding-top:28px}
+  .big-heart{width:150px;height:140px;margin:0 auto 6px;display:block}
+  .big-heart text{font-family:var(--display)}
+  h1{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(34px,10.5vw,48px);
+    line-height:1.05;
+    margin:8px 0 14px;
+    letter-spacing:.2px;
+  }
+  .sub{font-size:17px;font-weight:700;margin-bottom:24px}
+  .btn{
+    font-family:var(--display);
+    font-size:21px;
+    color:var(--cream);
+    background:var(--hot);
+    border:2.5px solid var(--berry);
+    border-radius:999px;
+    padding:13px 34px;
+    cursor:pointer;
+    box-shadow:4px 4px 0 var(--berry);
+    transition:transform .08s, box-shadow .08s;
+  }
+  .btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--berry)}
+  .btn.alt{background:var(--cream);color:var(--berry);font-size:17px;padding:10px 22px}
+  .fine{font-size:14px;font-weight:700;margin-top:22px;opacity:.8}
+
+  /* progress */
+  .top{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+  .back{
+    flex:none;width:40px;height:40px;border-radius:50%;
+    border:2.5px solid var(--berry);background:var(--cream);color:var(--berry);
+    font-size:20px;font-weight:800;cursor:pointer;line-height:1;
+  }
+  .back[disabled]{opacity:.3;cursor:default}
+  .bar{flex:1;height:16px;border:2.5px solid var(--berry);border-radius:999px;background:var(--cream);overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--bubblegum);border-right:2.5px solid var(--berry);transition:width .3s}
+  .count{flex:none;font-weight:800;font-size:15px;min-width:46px;text-align:right}
+
+  /* question */
+  .q{font-family:var(--display);font-weight:400;font-size:clamp(25px,7.2vw,31px);line-height:1.12;margin-bottom:6px}
+  .hint{font-size:15px;font-weight:700;opacity:.75;margin-bottom:6px}
+  .opts{display:grid;gap:11px;margin-top:18px}
+  .opt{
+    display:flex;align-items:center;gap:12px;text-align:left;
+    width:100%;
+    font-family:var(--body);font-weight:700;font-size:16.5px;color:var(--berry);
+    background:var(--cream);
+    border:2.5px solid var(--berry);border-radius:18px;
+    padding:13px 14px;cursor:pointer;
+    box-shadow:3px 3px 0 var(--lilac);
+    transition:transform .08s, box-shadow .08s, background .12s;
+  }
+  .opt:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--lilac)}
+  .opt .dot{
+    flex:none;width:22px;height:22px;border-radius:50%;
+    border:2.5px solid var(--berry);background:var(--cream);
+  }
+  .opt.picked{background:var(--bubblegum)}
+  .opt.picked .dot{background:var(--hot)}
+  .opt:focus-visible,.btn:focus-visible,.back:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+
+  /* result */
+  .result{text-align:center}
+  .result .tag{font-weight:800;font-size:15px;margin-bottom:6px}
+  .meter{position:relative;width:190px;height:178px;margin:6px auto 4px}
+  .meter svg{width:100%;height:100%;display:block;overflow:visible}
+  .meter .score{
+    position:absolute;left:0;right:0;top:44%;
+    font-family:var(--display);font-size:38px;line-height:1;color:var(--cream);
+    text-shadow:0 2px 0 var(--berry);
+  }
+  .meter .score small{display:block;font-size:15px;margin-top:4px;font-family:var(--body);font-weight:800}
+  .result h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,9vw,40px);line-height:1.05;margin:10px 0 12px}
+  .result p{font-size:17px;font-weight:600;margin-bottom:10px}
+  .result .real{font-size:14px;font-weight:700;opacity:.8;margin:16px 0 20px}
+  .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .toast{margin-top:12px;font-weight:800;font-size:14px}
+  .toast:empty{display:none}
+
+  /* welcome moment (plays once when the page opens) */
+  .intro{position:relative}
+  @keyframes pop{0%{transform:scale(.3) rotate(-8deg);opacity:0}60%{transform:scale(1.12) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+  @keyframes floatUp{0%{transform:translateY(0) scale(.5);opacity:0}15%{opacity:1}100%{transform:translateY(-170px) scale(1.15);opacity:0}}
+  .big-heart{animation:pop .7s cubic-bezier(.3,1.5,.5,1) both}
+  .burst{position:absolute;left:0;right:0;top:120px;height:1px;pointer-events:none}
+  .burst span{position:absolute;bottom:0;animation:floatUp 1.9s ease-out both}
+  .welcome{font-family:var(--display);font-size:24px;color:var(--hot);margin-bottom:2px}
+  .like-note{display:inline-flex;align-items:center;gap:8px;background:var(--lilac);border:2.5px solid var(--berry);border-radius:999px;padding:7px 14px;font-weight:800;font-size:14.5px;margin:0 0 18px}
+  .like-note span{color:var(--hot);font-size:17px}
+  .field{text-align:left;margin:0 0 22px}
+  .field label{display:block;font-weight:800;font-size:15px;margin-bottom:7px}
+  .field label small{font-weight:700;opacity:.7;font-size:13px}
+  .handle{display:flex;align-items:center;border:2.5px solid var(--berry);border-radius:16px;background:var(--cream);box-shadow:3px 3px 0 var(--lilac);overflow:hidden}
+  .handle span{padding:0 4px 0 14px;font-weight:800;color:var(--hot);font-size:19px}
+  .handle input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:700 17px var(--body);color:var(--berry);padding:12px 14px 12px 2px}
+  .handle:focus-within{outline:3px solid var(--hot);outline-offset:3px}
+  .greet{font-family:var(--display);font-size:21px;text-align:center;margin-bottom:12px;color:var(--hot)}
+
+  /* star match question */
+  .sel{margin-top:16px}
+  .sel label{display:block;font-weight:800;font-size:15px;margin-bottom:6px}
+  .sel select{width:100%;font:700 17px var(--body);color:var(--berry);background:var(--cream);border:2.5px solid var(--berry);border-radius:16px;padding:12px 14px;box-shadow:3px 3px 0 var(--lilac)}
+  .sel select:focus-visible{outline:3px solid var(--hot);outline-offset:3px}
+  .stack{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:22px}
+  .btn[disabled]{opacity:.45;cursor:default;box-shadow:4px 4px 0 var(--berry)}
+  .linkish{background:none;border:0;font:800 15px var(--body);color:var(--berry);text-decoration:underline;cursor:pointer;padding:6px}
+
+  /* result extras */
+  .star{margin:18px 0 6px;padding:14px;border:2.5px dashed var(--berry);border-radius:20px;background:var(--lilac)}
+  .star b{font-family:var(--display);font-weight:400;font-size:26px;display:block;line-height:1.1}
+  .star .sg{font-weight:800;font-size:15px;margin:2px 0 4px}
+  .star p{font-size:15px;margin:0}
+  .thanks{margin-top:20px;padding-top:18px;border-top:2.5px dotted var(--bubblegum)}
+  .thanks h3{font-family:var(--display);font-weight:400;font-size:27px;color:var(--hot);line-height:1.1;margin-bottom:6px}
+  .thanks p{font-size:16.5px;font-weight:700;margin-bottom:16px}
+
+  /* watermark */
+  .wm{text-align:center;margin-top:22px;font-weight:800;font-size:14px;color:var(--hot);opacity:.85}
+  .wm-card{margin:20px -22px -26px;padding:12px 16px;border-top:2.5px solid var(--berry);background:var(--bubblegum);
+    border-radius:0 0 23px 23px;font-family:var(--display);font-size:19px;color:var(--berry);text-align:center}
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;animation:none !important}
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- INTRO -->
+  <section id="intro" class="screen active">
+    <div class="card intro">
+      <div class="burst" id="burst" aria-hidden="true"></div>
+      <svg class="big-heart" viewBox="0 0 150 140" aria-hidden="true">
+        <path d="M75 132C20 92 6 62 12 40 20 12 58 8 75 36 92 8 130 12 138 40c6 22-8 52-63 92z" fill="#FF8FB1" stroke="#5A1E3A" stroke-width="4" stroke-linejoin="round"/>
+        <text x="75" y="88" text-anchor="middle" font-size="64" fill="#FFFAFC" stroke="#5A1E3A" stroke-width="2">?</text>
+      </svg>
+      <p class="welcome">Welcome!</p>
+      <h1>Does your long distance crush like you back?</h1>
+      <p class="sub">19 questions. Be honest with yourself.</p>
+      <p class="like-note"><span aria-hidden="true">&#9829;</span> Don't forget to like the pin!</p>
+      <div class="field">
+        <label for="handle">Your Pinterest username <small>(optional, only used to say hi)</small></label>
+        <div class="handle"><span>@</span><input id="handle" type="text" maxlength="30" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="yourname"></div>
+      </div>
+      <button class="btn" id="start">Start quiz</button>
+      <p class="fine">Just for fun. Tap an answer and it moves on.</p>
+    </div>
+  </section>
+
+  <!-- QUESTION -->
+  <section id="quiz" class="screen">
+    <div class="top">
+      <button class="back" id="back" aria-label="Previous question">&#8592;</button>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="19" aria-valuenow="1"><i id="fill"></i></div>
+      <div class="count" id="count">1/19</div>
+    </div>
+    <p class="greet" id="greet"></p>
+    <div class="card">
+      <h2 class="q" id="qtext"></h2>
+      <p class="hint" id="qhint"></p>
+      <div class="opts" id="opts"></div>
+    </div>
+  </section>
+
+  <!-- STAR MATCH -->
+  <section id="star" class="screen">
+    <div class="top">
+      <button class="back" id="backStar" aria-label="Previous question">&#8592;</button>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="20" aria-valuenow="20"><i style="width:100%"></i></div>
+      <div class="count">20/20</div>
+    </div>
+    <div class="card">
+      <h2 class="q">Bonus: how compatible are you two astrologically?</h2>
+      <p class="hint">Just for fun. This one doesn't change your score.</p>
+      <div class="sel"><label for="mySign">Your sign</label><select id="mySign"></select></div>
+      <div class="sel"><label for="theirSign">Their sign</label><select id="theirSign"></select></div>
+      <div class="stack">
+        <button class="btn" id="seeResult" disabled>See my result</button>
+        <button class="linkish" id="skipStar">Skip this one</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" class="screen">
+    <div class="card result">
+      <p class="tag">Your result</p>
+      <div class="meter" aria-hidden="true">
+        <svg viewBox="0 0 150 140">
+          <defs><clipPath id="clip"><rect id="clipRect" x="0" y="140" width="150" height="140"/></clipPath></defs>
+          <path d="M75 132C20 92 6 62 12 40 20 12 58 8 75 36 92 8 130 12 138 40c6 22-8 52-63 92z" fill="#FFD6E5"/>
+          <path clip-path="url(#clip)" d="M75 132C20 92 6 62 12 40 20 12 58 8 75 36 92 8 130 12 138 40c6 22-8 52-63 92z" fill="#E8508A"/>
+          <path d="M75 132C20 92 6 62 12 40 20 12 58 8 75 36 92 8 130 12 138 40c6 22-8 52-63 92z" fill="none" stroke="#5A1E3A" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+        <div class="score"><span id="scoreNum">0</span><small id="scoreMax">out of 75</small></div>
+      </div>
+      <h2 id="rTitle"></h2>
+      <p id="rBody"></p>
+      <div class="star" id="starBox" hidden>
+        <b id="starPct"></b>
+        <p class="sg" id="starSigns"></p>
+        <p id="starLine"></p>
+      </div>
+      <p class="real">Just for fun. Only they can tell you for real.</p>
+      <div class="thanks">
+        <h3 id="thanksTitle">Thank you for taking the quiz!</h3>
+        <p>Don't forget to share it with your bestie, and like the pin if you loved it &#9829;</p>
+        <div class="actions">
+          <button class="btn" id="share">Share quiz</button>
+          <button class="btn alt" id="retake">Retake</button>
+        </div>
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+      <div class="wm-card">&#9829; @julietscheese on Pinterest</div>
+    </div>
+  </section>
+
+  <footer class="wm">&#9829; @julietscheese</footer>
+
+</main>
+
+<script>
+/* Each option is [text, points]. */
+const QUESTIONS = [
+  { q:"How long have you liked them?", o:[
+    ["Less than a month",0],["1-3 months",1],["4-7 months",1],["8-12 months",1],["Over a year",1]]},
+  { q:"How many apps do you follow and talk on?", o:[
+    ["1 app",1],["2 apps",2],["3 apps",3],["4 apps",4],["5 or more",5]]},
+  { q:"Do you have streaks on apps that have them?", o:[
+    ["Yes, we have a streak going and it's long (30+ days)",4],
+    ["Yes, we have a streak going (under 30 days)",3],
+    ["We had one, it died, but we started a new one",2],
+    ["We had one but it died and that's it",1],
+    ["No streak",0],
+    ["I'm the only one keeping the streak alive",0],
+    ["The apps we use don't have streaks",0]]},
+  { q:"Does your crush make actual effort to talk to you?", o:[
+    ["They do, and it's really nice. We get each other so well",4],
+    ["They do, but it's mostly problems and emotional stuff. We advise each other",3],
+    ["They do, but it's just to check up and then the convo dies",2],
+    ["I always start it. They text nice, but it ends when the topic's over",1],
+    ["They do not",0]]},
+  { q:"On a scale of 1 to 10, how much do you think your crush actually likes you?", o:[
+    ["9-10",4],["7-8",3],["5-6",2],["3-4",1],["1-2",0]]},
+  { q:"Has your crush ever told you they liked you in the past?", hint:"Probably back when you didn't like them.", o:[
+    ["Yes, they told me straight up",4],
+    ["A friend told me they liked me",3],
+    ["They never said it, but they dropped hints",2],
+    ["Maybe? I'm not sure if they were serious or joking",1],
+    ["No, never",0]]},
+  { q:"Has your crush ever said things that made you think \"okay, they definitely like me\"?", o:[
+    ["Yes, so many times. I'm basically sure",4],
+    ["A few times, and it was pretty clear",3],
+    ["Once or twice, but it could've meant different things",2],
+    ["Maybe? I might be overthinking it",1],
+    ["Never",0]]},
+  { q:"Has your crush (or their friends) ever said things that made you think \"they don't like me\"?", o:[
+    ["Never, not once",4],
+    ["Once, but it was probably a joke or taken out of context",3],
+    ["A few times, but it's mixed with good signs too",2],
+    ["Yes, a few times, and it really made me doubt it",1],
+    ["Yes, a lot. They basically treat me like just a friend",0]]},
+  { q:"How often does your crush compliment your looks?", o:[
+    ["All the time, and it's specific (your smile, your hair, your outfit)",4],
+    ["Often, like whenever I post or send a pic",3],
+    ["Sometimes",2],
+    ["Once or twice, ever",1],
+    ["Never",0]]},
+  { q:"How often does your crush compliment your personality?", o:[
+    ["All the time, and it's specific (your humor, your kindness, how you think)",4],
+    ["Often",3],
+    ["Sometimes",2],
+    ["Once or twice, ever",1],
+    ["Never",0]]},
+  { q:"Does your crush call you funny?", o:[
+    ["Yes, they say I have great humor and love talking to me",4],
+    ["Yes, they laugh at my jokes and say I'm funny",3],
+    ["They say it, but it feels like teasing or \"funny stupid\"",2],
+    ["They laugh sometimes but never actually say it",1],
+    ["No",0]]},
+  { q:"Does your crush have a nickname for you?", o:[
+    ["Yes, a sweet one just for me, or we both have nicknames for each other",4],
+    ["Yes, a cute one, and they've used a few different ones",3],
+    ["Yes, but it's more teasing or jokey",2],
+    ["They just use a shorter version of my name",1],
+    ["No, just my normal name",0]]},
+  { q:"Do you and your crush FaceTime or voice call?", o:[
+    ["Yes, we call regularly and they're often the one who starts it",5],
+    ["Yes, we call regularly",4],
+    ["Yes, but only sometimes, on and off",2],
+    ["Only when I'm the one who asks",1],
+    ["No, never",0]]},
+  { q:"Do they talk about meeting up in person someday?", o:[
+    ["Yes, with real plans or a time in mind",4],
+    ["Yes, they bring it up often (\"can't wait to see you\")",3],
+    ["Yes, but playfully, not really serious",2],
+    ["Only when I bring it up",1],
+    ["Never",0]]},
+  { q:"Do they say good morning or good night?", o:[
+    ["A full \"good night\" or \"good morning\" most days",4],
+    ["Yes, but shortened (\"night\", \"gn\", \"gudnyt\")",3],
+    ["Only after a really good convo or when they're in a great mood",2],
+    ["Rarely, only a handful of times",1],
+    ["Never",0]]},
+  { q:"Do they send you stuff on your apps?", hint:"Memes, songs, reels, anything.", o:[
+    ["Often, with a \"this reminded me of you\"",4],
+    ["Often",3],
+    ["Sometimes",2],
+    ["Rarely, mostly I'm the one sending",1],
+    ["Never",0]]},
+  { q:"Do they reply to your posts and stories?", o:[
+    ["Always, and fast",4],
+    ["Often",3],
+    ["Sometimes",2],
+    ["They don't react to anyone's posts, that's just how they are",2],
+    ["They react to other people's but not mine",0]]},
+  { q:"How do they react when you mention other people?", o:[
+    ["They get a little jealous or ask who it is",4],
+    ["They go quiet or change the subject",3],
+    ["They act normal but curious",2],
+    ["No reaction at all",1],
+    ["They hype it up or try to set me up",0]]},
+  { q:"Do they ask to see you?", hint:"Like \"send a pic\" or \"show me your face\".", o:[
+    ["All the time",4],
+    ["Often",3],
+    ["Sometimes",2],
+    ["Rarely, only when I offer",1],
+    ["Never",0]]}
+];
+
+const TIERS = [
+  { min:.80, title:"They're into you",
+    body:"Okay, the signs are loud. They make time for you, they show up on your apps, and they act different with you. Distance isn't stopping them. If you've been waiting for a sign, this is it." },
+  { min:.60, title:"Very likely yes",
+    body:"There's real interest here. They like talking to you and they keep showing up. They might be shy, or taking it slow because of the distance. Keep being you, and maybe give them a little nudge." },
+  { min:.40, title:"Mixed signals",
+    body:"Some good signs, some quiet ones. Could be a crush, could be a close friend who cares about you. Don't read too much into it yet. Watch what they do over the next few weeks, not just what they say." },
+  { min:0, title:"Probably just friends",
+    body:"Real talk: the signs aren't showing up right now. That doesn't make you any less lovable. Protect your heart, keep your energy for people who match it, and enjoy the friendship without pressure." }
+];
+
+const MAX = QUESTIONS.reduce((s,q)=>s+Math.max(...q.o.map(o=>o[1])),0);
+const TOTAL = QUESTIONS.length + 1;   // +1 for the bonus star match
+const SIGNS = [
+  ["Aries","fire"],["Taurus","earth"],["Gemini","air"],["Cancer","water"],
+  ["Leo","fire"],["Virgo","earth"],["Libra","air"],["Scorpio","water"],
+  ["Sagittarius","fire"],["Capricorn","earth"],["Aquarius","air"],["Pisces","water"]
+];
+const $ = id => document.getElementById(id);
+const screens = { intro:$("intro"), quiz:$("quiz"), star:$("star"), result:$("result") };
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let idx = 0;
+let answers = [];   // answers[i] = option index picked
+let lock = false;
+let username = "";
+
+function show(name){
+  Object.values(screens).forEach(s=>s.classList.remove("active"));
+  screens[name].classList.add("active");
+  window.scrollTo({top:0});
+}
+
+/* welcome: a few hearts float up once */
+function burst(){
+  const c = $("burst");
+  c.innerHTML = "";
+  if(reduceMotion) return;
+  for(let i=0;i<9;i++){
+    const s = document.createElement("span");
+    s.textContent = "\u2665";
+    s.style.left = (8 + Math.random()*84) + "%";
+    s.style.fontSize = (14 + Math.random()*16) + "px";
+    s.style.color = i%2 ? "#E8508A" : "#FF8FB1";
+    s.style.animationDelay = (0.25 + i*0.12) + "s";
+    c.appendChild(s);
+  }
+}
+
+function cleanName(v){ return v.trim().replace(/^@+/,"").replace(/\s+/g,"").slice(0,30); }
+
+function render(){
+  const item = QUESTIONS[idx];
+  $("qtext").textContent = item.q;
+  $("qhint").textContent = item.hint || "";
+  $("qhint").style.display = item.hint ? "block" : "none";
+  $("greet").style.display = idx === 0 ? "block" : "none";
+  $("count").textContent = (idx+1) + "/" + TOTAL;
+  $("fill").style.width = ((idx+1)/TOTAL*100) + "%";
+  document.querySelector("#quiz .bar").setAttribute("aria-valuenow", idx+1);
+  $("back").disabled = idx === 0;
+
+  const box = $("opts");
+  box.innerHTML = "";
+  item.o.forEach((opt,i)=>{
+    const b = document.createElement("button");
+    b.className = "opt" + (answers[idx]===i ? " picked" : "");
+    b.type = "button";
+    const dot = document.createElement("span");
+    dot.className = "dot";
+    const label = document.createElement("span");
+    label.textContent = opt[0];
+    b.append(dot,label);
+    b.addEventListener("click",()=>pick(i,b));
+    box.appendChild(b);
+  });
+}
+
+function pick(i,btn){
+  if(lock) return;
+  lock = true;
+  answers[idx] = i;
+  document.querySelectorAll(".opt").forEach(o=>o.classList.remove("picked"));
+  btn.classList.add("picked");
+  setTimeout(()=>{
+    lock = false;
+    if(idx < QUESTIONS.length-1){ idx++; render(); window.scrollTo({top:0}); }
+    else show("star");
+  }, 260);
+}
+
+/* star match */
+function fillSigns(sel){
+  sel.innerHTML = "";
+  const first = document.createElement("option");
+  first.value = ""; first.textContent = "Choose a sign";
+  sel.appendChild(first);
+  SIGNS.forEach((s,i)=>{
+    const o = document.createElement("option");
+    o.value = i; o.textContent = s[0];
+    sel.appendChild(o);
+  });
+}
+
+function compat(a,b){
+  const ea = SIGNS[a][1], eb = SIGNS[b][1];
+  const pair = [ea,eb].sort().join("+");
+  let base, line;
+  if(a === b){ base = 92; line = "Same sign, you're basically mirrors. You get each other fast."; }
+  else if(ea === eb){ base = 88; line = "Same element, so your energy matches. It feels easy to be around each other."; }
+  else if(pair === "air+fire" || pair === "earth+water"){ base = 84; line = "Your elements feed each other. A really natural pairing."; }
+  else if(pair === "earth+fire"){ base = 58; line = "Different pace, but you can balance each other out."; }
+  else if(pair === "air+water"){ base = 58; line = "You feel things differently, so talk it through and it works."; }
+  else if(pair === "air+earth"){ base = 52; line = "Different worlds, so you'd learn a lot from each other."; }
+  else { base = 48; line = "Steam or storm. It takes patience, but the spark is real."; }
+  const pct = Math.min(97, base + ((a + b + a*b) % 9));
+  return { pct, line };
+}
+
+function checkStar(){
+  $("seeResult").disabled = !($("mySign").value !== "" && $("theirSign").value !== "");
+}
+
+/* result */
+function finish(withStar){
+  const score = answers.reduce((s,a,qi)=>s + QUESTIONS[qi].o[a][1], 0);
+  const pct = score / MAX;
+  const tier = TIERS.find(t=>pct >= t.min);
+  $("rTitle").textContent = tier.title;
+  $("rBody").textContent = tier.body;
+  $("scoreMax").textContent = "out of " + MAX;
+  $("thanksTitle").textContent = username ? "Thank you, @" + username + "!" : "Thank you for taking the quiz!";
+
+  const box = $("starBox");
+  if(withStar){
+    const a = +$("mySign").value, b = +$("theirSign").value;
+    const c = compat(a,b);
+    $("starPct").textContent = c.pct + "% star match";
+    $("starSigns").textContent = SIGNS[a][0] + " + " + SIGNS[b][0];
+    $("starLine").textContent = c.line + " (Just for fun, the stars can't see their heart.)";
+    box.hidden = false;
+  } else {
+    box.hidden = true;
+  }
+  show("result");
+
+  // fill the heart + count up the score
+  const clipRect = $("clipRect");
+  const fillTop = 140 - 140*pct;
+  if(reduceMotion){
+    clipRect.setAttribute("y", fillTop);
+    $("scoreNum").textContent = score;
+    return;
+  }
+  const start = performance.now(), dur = 1100;
+  (function tick(now){
+    const t = Math.min(1,(now-start)/dur);
+    const e = 1 - Math.pow(1-t,3);
+    clipRect.setAttribute("y", 140 - 140*pct*e);
+    $("scoreNum").textContent = Math.round(score*e);
+    if(t<1) requestAnimationFrame(tick);
+  })(start);
+}
+
+function reset(){
+  idx = 0; answers = []; lock = false;
+  $("clipRect").setAttribute("y",140);
+  $("scoreNum").textContent = "0";
+  $("toast").textContent = "";
+  $("mySign").value = ""; $("theirSign").value = "";
+  checkStar();
+  show("intro");
+  burst();
+}
+
+fillSigns($("mySign")); fillSigns($("theirSign"));
+$("mySign").addEventListener("change",checkStar);
+$("theirSign").addEventListener("change",checkStar);
+
+$("start").addEventListener("click",()=>{
+  username = cleanName($("handle").value);
+  $("greet").textContent = username ? "Welcome, @" + username + "!" : "Welcome!";
+  idx = 0; answers = []; render(); show("quiz");
+});
+$("handle").addEventListener("keydown",e=>{ if(e.key === "Enter") $("start").click(); });
+$("back").addEventListener("click",()=>{ if(idx>0 && !lock){ idx--; render(); } });
+$("backStar").addEventListener("click",()=>{ idx = QUESTIONS.length-1; render(); show("quiz"); });
+$("seeResult").addEventListener("click",()=>finish(true));
+$("skipStar").addEventListener("click",()=>finish(false));
+$("retake").addEventListener("click",reset);
+$("share").addEventListener("click", async ()=>{
+  const data = { title:document.title, text:"Take this quiz: does your long distance crush like you back?", url:location.href };
+  try{
+    if(navigator.share){ await navigator.share(data); return; }
+    await navigator.clipboard.writeText(location.href);
+    $("toast").textContent = "Link copied!";
+  }catch(e){
+    $("toast").textContent = "Copy the link from your browser bar.";
+  }
+});
+
+burst();
+</script>
+</body>
+</html>
